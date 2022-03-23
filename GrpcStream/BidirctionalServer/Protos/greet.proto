@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcStream";
+
+package number;
+
+// The greeting service definition.
+service StreamNumber {
+  // Sends a greeting
+  rpc SendNumber (stream SendNumberRequest) returns (stream NumberReply);
+}
+
+message SendNumberRequest {
+ int32 value = 1;
+ int32 index = 2;
+}
+
+message NumberReply {
+	int32 result = 1;
+	int32 index = 2;
+}
